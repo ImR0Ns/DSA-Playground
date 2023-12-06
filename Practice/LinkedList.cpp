@@ -1,6 +1,9 @@
 #include "LinkedList.h";
 
 //deleting and inserting starts from index 1
+
+//I added some input examples in the header.
+
 void LinkedList::append(LinkedList* next) {
 
 	LinkedList* currentPosition = this;
@@ -72,4 +75,14 @@ void LinkedList::printList() {
 		currentPosition = currentPosition->next;
 	}
 
+}
+
+void LinkedList::deleteList() { // free memory from heap
+	LinkedList* currentPosition = this;
+	while (currentPosition->next) {
+		LinkedList* lastPos = currentPosition;
+		currentPosition = currentPosition->next;
+		delete lastPos;
+	}
+	delete currentPosition;
 }
