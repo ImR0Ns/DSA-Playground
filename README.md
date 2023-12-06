@@ -13,12 +13,9 @@ Explore the repository to find:
 ### Data Structures:
 
 - Linked Lists ✓
-- Stacks
-- Queues
 - Trees
 - Graphs
 - Hash Tables
-- ... and more
 
 ### Algorithms:
 
@@ -27,7 +24,6 @@ Explore the repository to find:
 - Greedy Algorithms
 - Graph Algorithms
 - Recursion
-- ... and more
 
 ## Why This Repository?
 
