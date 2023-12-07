@@ -1,97 +1,98 @@
 #include  <iostream>
 #include <vector>
 #include <algorithm>
-#include "LinkedList.h";
+#include "LinkedList.h"
+#include "BinaryTree.h"
 
 
-struct BinaryTree {
+//I want to create a separate function for BTS Insert And Search to avoid repeating!
+
+//Binary Search Tree
+struct BTS {
 	int data;
-	BinaryTree* right;
-	BinaryTree* left;
+	BTS* left;
+	BTS* right;
 
-	BinaryTree(int data) : data(data), right(nullptr), left(nullptr) {}
+	BTS(int data) : data(data), left(nullptr), right(nullptr) {}
 
-	/*
-		Insertion, check if node value we want to insert is greater or less than the node we are.
-		if greater move to right
-		if less move to left
-		Do this until we find a free node(nullptr)
-	*/
-	void insertNode(BinaryTree* node) {
-		BinaryTree* currentPosition = this;
-		bool positionFound = false;
-		while (!positionFound) {
-			if (node->data > currentPosition->data) {
+	void insertElement(BTS* n) {
+
+		bool foundPosition = false;
+		BTS* currentPosition = this;
+
+		while (!foundPosition) {
+			if (n->data > currentPosition->data) {
 				if (currentPosition->right == nullptr) {
-					currentPosition->right = node;
-					positionFound = true;
+					currentPosition->right = n;
+					foundPosition = true;
 				}
 				else {
 					currentPosition = currentPosition->right;
 				}
-			} else {
+			}
+			else if(n->data < currentPosition->data) {
 				if (currentPosition->left == nullptr) {
-					currentPosition->left = node;
-					positionFound = true;
-				}else {
+					currentPosition->left = n;
+					foundPosition = true;
+				}
+				else {
 					currentPosition = currentPosition->left;
 				}
 			}
 		}
 	}
 
-	//print the entire tree
-	void printTree(bool forSearch = false, int whatToSearch = 0) {
-		std::vector<BinaryTree*> remain = { this };
-		while (remain.size() != 0) {
-			BinaryTree* last = remain[remain.size() - 1];
-			remain.pop_back();
-			if (forSearch && last->data == whatToSearch) {
-				std::cout << "Found: " << last->data << "\n";
-				break;
-			}
-			if (!forSearch) {
-				std::cout << last->data << ",";
-			}
-			if (last->right) {
-				remain.push_back(last->right);
-			}
-			if (last->left) {
-				remain.push_back(last->left);
-			}
+	void searchElement(int data) {
+		if (this->data == data) {
+			std::cout << "Is the root\n";
 		}
 
-	}
+		bool foundData = false;
+		BTS* currentPosition = this;
+		int depth = 0;
 
-	//search value
-	void search(int val) {
-		printTree(true, val);
-	}
+		while (!foundData) {
+			if (currentPosition->data == data) {
+				std::cout << "Value Found at depth of " << depth << "\n";
+				foundData = true;
+			}
 
-	static int height(BinaryTree* root) {
-		if (root == nullptr) {
-			return -1;
+			if (data > currentPosition->data) {
+				if (currentPosition->right == nullptr) {
+					std::cout << "Value not found!\n";
+					foundData = true;
+				}
+				else {
+					currentPosition = currentPosition->right;
+				}
+			}
+			else if (data < currentPosition->data) {
+				if (currentPosition->left == nullptr) {
+					std::cout << "Value not found!\n";
+					foundData = true;
+				}
+				else {
+					currentPosition = currentPosition->left;
+				}
+			}
+			depth++;
 		}
-		int leftHeight = height(root->left);
-		int rightHeight = height(root->right);
-
-		return std::max(leftHeight, rightHeight) + 1;
 	}
 
 };
 
 int main() {
+	BTS* node = new BTS(8);
+	node->insertElement(new BTS(3));
+	node->insertElement(new BTS(1));
+	node->insertElement(new BTS(6));
+	node->insertElement(new BTS(4));
+	node->insertElement(new BTS(7));
+	node->insertElement(new BTS(10));
+	node->insertElement(new BTS(14));
+	node->insertElement(new BTS(13));
 
-	BinaryTree* root = new BinaryTree(5);
+	node->searchElement(15);
 
-	root->insertNode(new BinaryTree(3));
-	root->insertNode(new BinaryTree(8));
-	root->insertNode(new BinaryTree(2));
-	root->insertNode(new BinaryTree(4));
-	root->insertNode(new BinaryTree(6));
-	root->insertNode(new BinaryTree(9));
-
-	std::cout << BinaryTree::height(root);
-
-
+	std::cout << node;
 }
