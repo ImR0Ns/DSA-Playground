@@ -1,98 +1,103 @@
-#include  <iostream>
-#include <vector>
+#include <iostream>
 #include <algorithm>
-#include "LinkedList.h"
-#include "BinaryTree.h"
 
+struct AVLTree {
+//function helpers
+private:
+    int calculateHeight(AVLTree* root) {
+        return (root != nullptr) ? root->height : -1;
+    }
 
-//I want to create a separate function for BTS Insert And Search to avoid repeating!
+    int calculateBalance(AVLTree* node) {
+        return (node != nullptr) ? calculateHeight(node->left) - calculateHeight(node->right) : 0;
+    }
 
-//Binary Search Tree
-struct BTS {
-	int data;
-	BTS* left;
-	BTS* right;
+    void updateHeight(AVLTree*& node) {
+        if (node != nullptr) {
+            node->height = 1 + std::max(calculateHeight(node->left), calculateHeight(node->right));
+        }
+    }
 
-	BTS(int data) : data(data), left(nullptr), right(nullptr) {}
+    void leftRotate(AVLTree*& root) {
+        AVLTree* newRoot = root->right;
+        root->right = newRoot->left;
+        newRoot->left = root;
 
-	void insertElement(BTS* n) {
+        updateHeight(root);
+        updateHeight(newRoot);
 
-		bool foundPosition = false;
-		BTS* currentPosition = this;
+        root = newRoot;
+    }
 
-		while (!foundPosition) {
-			if (n->data > currentPosition->data) {
-				if (currentPosition->right == nullptr) {
-					currentPosition->right = n;
-					foundPosition = true;
-				}
-				else {
-					currentPosition = currentPosition->right;
-				}
-			}
-			else if(n->data < currentPosition->data) {
-				if (currentPosition->left == nullptr) {
-					currentPosition->left = n;
-					foundPosition = true;
-				}
-				else {
-					currentPosition = currentPosition->left;
-				}
-			}
-		}
-	}
+    void rightRotate(AVLTree*& root) {
+        AVLTree* newRoot = root->left;
+        root->left = newRoot->right;
+        newRoot->right = root;
 
-	void searchElement(int data) {
-		if (this->data == data) {
-			std::cout << "Is the root\n";
-		}
+        updateHeight(root);
+        updateHeight(newRoot);
 
-		bool foundData = false;
-		BTS* currentPosition = this;
-		int depth = 0;
+        root = newRoot;
+    }
+public:
+    int data;
+    AVLTree* left;
+    AVLTree* right;
+    int height;
 
-		while (!foundData) {
-			if (currentPosition->data == data) {
-				std::cout << "Value Found at depth of " << depth << "\n";
-				foundData = true;
-			}
+    AVLTree(int data) : data(data), left(nullptr), right(nullptr), height(0) {}
 
-			if (data > currentPosition->data) {
-				if (currentPosition->right == nullptr) {
-					std::cout << "Value not found!\n";
-					foundData = true;
-				}
-				else {
-					currentPosition = currentPosition->right;
-				}
-			}
-			else if (data < currentPosition->data) {
-				if (currentPosition->left == nullptr) {
-					std::cout << "Value not found!\n";
-					foundData = true;
-				}
-				else {
-					currentPosition = currentPosition->left;
-				}
-			}
-			depth++;
-		}
-	}
+    void insertNode(AVLTree*& node, int value) {
+        if (node == nullptr) {
+            node = new AVLTree(value);
+        }
+        else if (value < node->data) {
+            insertNode(node->left, value);
+        }
+        else if (value > node->data) {
+            insertNode(node->right, value);
+        }
 
+        updateHeight(node);
+        rebalance(node);
+    }
+
+    void rebalance(AVLTree*& root) {
+        int balance = calculateBalance(root);
+
+        if (balance > 1) {
+            if (calculateBalance(root->left) >= 0) {
+                rightRotate(root);
+            }
+            else {
+                leftRotate(root->left);
+                rightRotate(root);
+            }
+        }
+        else if (balance < -1) {
+            if (calculateBalance(root->right) <= 0) {
+                leftRotate(root);
+            }
+            else {
+                rightRotate(root->right);
+                leftRotate(root);
+            }
+        }
+    }
 };
 
 int main() {
-	BTS* node = new BTS(8);
-	node->insertElement(new BTS(3));
-	node->insertElement(new BTS(1));
-	node->insertElement(new BTS(6));
-	node->insertElement(new BTS(4));
-	node->insertElement(new BTS(7));
-	node->insertElement(new BTS(10));
-	node->insertElement(new BTS(14));
-	node->insertElement(new BTS(13));
+    AVLTree* root = nullptr;
+    root->insertNode(root, 10);
+    root->insertNode(root, 8);
+    root->insertNode(root, 6);
+    root->insertNode(root, 4);
 
-	node->searchElement(15);
+    std::cout << "Root Data: " << root->data << std::endl;
+    std::cout << "Left Data: " << root->left->data << std::endl;
+    std::cout << "Right Data: " << root->right->data << std::endl;
 
-	std::cout << node;
+    delete root;
+
+    return 0;
 }
