@@ -7,7 +7,7 @@ struct BinaryTree {
 	BinaryTree* right;
 	BinaryTree* left;
 
-	BinaryTree(int data) : data(data), right(nullptr), left(nullptr) {}
+	explicit BinaryTree(int data) : data(data), right(nullptr), left(nullptr) {}
 
 	/*
 		Insertion, check if node value we want to insert is greater or less than the node we are.
@@ -29,7 +29,9 @@ struct BinaryTree {
 	BinaryTree* findMin(BinaryTree* node);
 
 	BinaryTree* deleteNode(BinaryTree* root, int key);
-
+	
+	//free the memory in heap;
+	void deleteTree();
 };
 
 /*
@@ -49,4 +51,6 @@ struct BinaryTree {
 
 
 	root->printTree();
+
+	root->deleteTree(); //using the same strategy to print the tree
 */

@@ -118,3 +118,25 @@ AVLTree* AVLTree::findMin(AVLTree* node) {
     }
     return node;
 }
+
+void AVLTree::deleteTree() {
+
+    std::vector<AVLTree*> remain = { this };
+
+    while (remain.size() != 0) {
+
+        AVLTree* last = remain[remain.size() - 1];
+        remain.pop_back();
+
+        if (last->right) {
+            remain.push_back(last->right);
+        }
+        if (last->left) {
+            remain.push_back(last->left);
+        }
+
+        //delete memory
+        delete last;
+    }
+
+}

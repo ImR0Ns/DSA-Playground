@@ -1,10 +1,25 @@
 #include <iostream>
 #include <algorithm>
-#include "AVLTree.h"
+
+
+struct RedBlackTree {
+    int data;
+    int color; // 1 red & 2 black
+    RedBlackTree* left;
+    RedBlackTree* right;
+
+
+    explicit RedBlackTree(int data) : data(data), color(0), left(nullptr), right(nullptr) {};
+
+    void insert(RedBlackTree* node) {
+    }
+};
 
 int main() {
 
-    //I know about the memory leaks from BST and AVLT, next update I will resolve it!
+    RedBlackTree rbTree(10);
+    rbTree.insert(new RedBlackTree(5));
+    rbTree.insert(new RedBlackTree(15));
 
     return 0;
 }

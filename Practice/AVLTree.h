@@ -1,5 +1,6 @@
 #pragma once
 #include <algorithm>
+#include <vector>
 
 struct AVLTree {
     //function helpers
@@ -21,7 +22,7 @@ public:
     AVLTree* right;
     int height;
 
-    AVLTree(int data) : data(data), left(nullptr), right(nullptr), height(0) {}
+    explicit AVLTree(int data) : data(data), left(nullptr), right(nullptr), height(0) {}
 
     void insertNode(AVLTree*& node, int value);
 
@@ -29,6 +30,7 @@ public:
 
     void deleteNode(AVLTree*& root, int key);
 
+    void deleteTree();
 
 };
 
@@ -48,6 +50,6 @@ public:
     std::cout << "Left Data: " << root->left->data << std::endl;
     std::cout << "Right Data: " << root->right->data << std::endl;
 
-    delete root;
+    root->deleteTree();
 
 */

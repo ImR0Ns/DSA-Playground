@@ -7,7 +7,8 @@
 		if greater move to right
 		if less move to left
 		Do this until we find a free node(nullptr)
-	*/
+*/
+
 void BinaryTree::insertNode(BinaryTree* node) {
 	BinaryTree* currentPosition = this;
 	bool positionFound = false;
@@ -59,7 +60,7 @@ void BinaryTree::printTree(bool forSearch, int whatToSearch) {
 
 //search value
 void BinaryTree::search(int val) {
-	printTree(true, val);
+	printTree(true, val); // we using the method of printing 
 }
 
 int BinaryTree::height(BinaryTree* root) {
@@ -111,4 +112,27 @@ BinaryTree* BinaryTree::deleteNode(BinaryTree* root, int key) {
 	}
 
 	return root;
+}
+
+//we need to clear the memory from heap, so we using the method of printing to delete every address of memory 
+void BinaryTree::deleteTree() {
+
+	std::vector<BinaryTree*> remain = { this };
+
+	while (remain.size() != 0) {
+
+		BinaryTree* last = remain[remain.size() - 1];
+		remain.pop_back();
+
+		if (last->right) {
+			remain.push_back(last->right);
+		}
+		if (last->left) {
+			remain.push_back(last->left);
+		}
+
+		//delete memory
+		delete last;
+	}
+
 }
