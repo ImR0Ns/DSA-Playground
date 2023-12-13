@@ -13,7 +13,7 @@ Explore the repository to find:
 ### Data Structures:
 
 - Linked Lists ✓
-- Trees | Binary Search Tree ✓ | AVL Tree ✓ | Red-Black Tree
+- Trees | Binary Search Tree ✓ | AVL Tree ✓ | Red-Black Tree ✓
 - Graphs
 - Hash Tables
 
