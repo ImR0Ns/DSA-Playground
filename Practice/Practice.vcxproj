@@ -129,15 +129,19 @@
   <ItemGroup>
     <ClCompile Include="AVLTree.cpp" />
     <ClCompile Include="BinaryTree.cpp" />
+    <ClCompile Include="GraphOperations.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RedBlackTree.cpp" />
+    <ClCompile Include="UDGraph.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AVLTree.h" />
     <ClInclude Include="BinaryTree.h" />
+    <ClInclude Include="GraphOperations.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="RedBlackTree.h" />
+    <ClInclude Include="UDGraph.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

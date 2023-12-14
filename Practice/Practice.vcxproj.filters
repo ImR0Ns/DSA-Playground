@@ -30,6 +30,12 @@
     <ClCompile Include="RedBlackTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UDGraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphOperations.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedList.h">
@@ -42,6 +48,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RedBlackTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphOperations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UDGraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
