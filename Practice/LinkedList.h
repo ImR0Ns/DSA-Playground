@@ -6,6 +6,7 @@ struct LinkedList {
 	int data;
 	LinkedList* next;
 
+	LinkedList() {};
 	explicit LinkedList(int data) : data(data), next(nullptr) {}
 
 	void append(LinkedList* next);

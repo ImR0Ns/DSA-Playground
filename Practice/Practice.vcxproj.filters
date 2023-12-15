@@ -13,48 +13,63 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Binary Search Tree">
+      <UniqueIdentifier>{8d41f418-2d99-4a4b-8519-fe2152c9dde0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AVL Tree">
+      <UniqueIdentifier>{40ae94ab-d825-4dbe-852b-ba82b089fba7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Red-Black Tree">
+      <UniqueIdentifier>{b5865e74-9bcf-4fa4-b8e1-3532b7617860}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Linked List">
+      <UniqueIdentifier>{a18f3ef4-62fc-4d79-8dfb-72db2c638e48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphs with Adjacency Matrix">
+      <UniqueIdentifier>{3c420c53-aa15-46dd-b65a-10c067290fc1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LinkedList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BinaryTree.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AVLTree.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RedBlackTree.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UDGraph.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GraphOperations.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BinaryTree.cpp">
+      <Filter>Binary Search Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="AVLTree.cpp">
+      <Filter>AVL Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="RedBlackTree.cpp">
+      <Filter>Red-Black Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList.cpp">
+      <Filter>Linked List</Filter>
+    </ClCompile>
+    <ClCompile Include="UDGraph.cpp">
+      <Filter>Graphs with Adjacency Matrix</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LinkedList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BinaryTree.h">
-      <Filter>Header Files</Filter>
+      <Filter>Binary Search Tree</Filter>
     </ClInclude>
     <ClInclude Include="AVLTree.h">
-      <Filter>Header Files</Filter>
+      <Filter>AVL Tree</Filter>
     </ClInclude>
     <ClInclude Include="RedBlackTree.h">
-      <Filter>Header Files</Filter>
+      <Filter>Red-Black Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>Linked List</Filter>
     </ClInclude>
     <ClInclude Include="GraphOperations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UDGraph.h">
-      <Filter>Header Files</Filter>
+      <Filter>Graphs with Adjacency Matrix</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
