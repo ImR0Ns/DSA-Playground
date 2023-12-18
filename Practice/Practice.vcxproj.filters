@@ -28,6 +28,9 @@
     <Filter Include="Graphs with Adjacency Matrix">
       <UniqueIdentifier>{3c420c53-aa15-46dd-b65a-10c067290fc1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphs with Adjacency List">
+      <UniqueIdentifier>{0f0dda5f-0ab1-40d6-8dd5-f1fb577f6f66}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -51,6 +54,9 @@
     <ClCompile Include="UDGraph.cpp">
       <Filter>Graphs with Adjacency Matrix</Filter>
     </ClCompile>
+    <ClCompile Include="UDGraphAL.cpp">
+      <Filter>Graphs with Adjacency List</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryTree.h">
@@ -70,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="UDGraph.h">
       <Filter>Graphs with Adjacency Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="UDGraphAL.h">
+      <Filter>Graphs with Adjacency List</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

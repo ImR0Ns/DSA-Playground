@@ -13,10 +13,12 @@ struct LinkedList {
 	void prepend(LinkedList* replaceNode);
 	void insertingNode(LinkedList* nodeToInsert, int position);
 	void deleteNode(int position); //you can't delete the head;
+	void deleteFromList(int value, LinkedList*& head);
 	LinkedList* searchForNode(int value);
 	void printList();
 	void deleteList(); //free memory from heap
 };
+
 
 /*
 * 

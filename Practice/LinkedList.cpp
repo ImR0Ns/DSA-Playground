@@ -54,6 +54,35 @@ void LinkedList::deleteNode(int position) { //you can't delete the head;
 
 	delete nodeToDelete; //free memory
 }
+
+void LinkedList::deleteFromList(int value, LinkedList*& head) {
+	LinkedList* currentPosition = head;
+	LinkedList* rememberLast = nullptr;
+	bool isHead = true;
+
+	while (currentPosition->data != value && currentPosition->next) {
+		isHead = false;
+		rememberLast = currentPosition;
+		currentPosition = currentPosition->next;
+	}
+
+	if (currentPosition->next == nullptr && currentPosition->data != value) {
+		std::cout << "Value not found!";
+	}
+	else {
+		if (isHead) {
+			// Update head to the next element
+			head = currentPosition->next;
+			delete currentPosition;
+		}
+		else {
+			rememberLast->next = currentPosition->next;
+			delete currentPosition;
+		}
+	}
+}
+
+
 LinkedList* LinkedList::searchForNode(int value) {
 	LinkedList* currentPosition = this;
 	int position = 1;
