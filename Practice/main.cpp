@@ -1,31 +1,104 @@
 #include <iostream>
 #include <vector>
-#include "UDGraph.h"
+
+//I tried to do this in the stack because it is faster than in the heap
+
+struct HTItems {
+	char key;
+	int value;
+	HTItems() : key(NULL), value(NULL) {};
+	HTItems(char key, int value) : key(key), value(value) {};
+};
+
+struct HTable {
+	static int const maxSize = 10;
+	HTItems array[maxSize];
+
+	int hashFunction(char key) {
+		return key % maxSize;
+	}
+
+	void addItem(char key, int value) {
+		int theHash = hashFunction(key);
+
+		while (array[theHash].key) {
+			theHash = (theHash + 1) % maxSize;
+		}
+
+		array[theHash] = HTItems(key, value);
+	}
+
+
+	//get value by key
+	int getValueByKey(char key) {
+		//hash for check
+		int theHash = hashFunction(key);
+		//check if exists
+		if (array[theHash].key != NULL) {
+			return array[theHash].value;
+		}
+		else {
+			std::cout << "The key has no value";
+			//return -1 no value
+			return -1;
+		}
+	}
+
+	int& operator[](char key) { // & - to modify not to create a clone of that!
+		int theHash = hashFunction(key);
+
+		while (array[theHash].key != 0 && array[theHash].key != key) {
+			theHash = (theHash + 1) % maxSize;
+		}
+
+		if (array[theHash].key == 0) {
+			addItem(key, 0);
+		}
+
+		return array[theHash].value;
+	}
+
+	//return max size
+	int max_size() const {
+		return maxSize;
+	}
+
+	int size() const {
+		int counter = 0;
+		for (int i = 0; i < maxSize; i++) {
+			if (array[i].key) {
+				counter++;
+			}
+		}
+		return counter;
+	}
+
+	void clear(char key) {
+		int theHash = hashFunction(key);
+
+		if (array[theHash].key) {
+			array[theHash].key = NULL;
+			array[theHash].value = NULL;
+		}
+		else {
+			std::cout << "No element to delete with that key!\n";
+		}
+	}
+
+};
 
 int main() {
-    // Create a large undirected graph with 1000 nodes
-    UDGraph largeGraph(1000, false);
+	HTable table;
 
-    // Test adding edges
-    for (int i = 0; i < 1000; ++i) {
-        largeGraph.addEdge(i, (i + 1) % 1000); // Connect each node to the next one
-    }
+	table['A'] = 1;
+	table['K'] = 3;
+	table['a'] = 1;
 
-    // Test adding and deleting nodes
-    for (int i = 0; i < 100; ++i) {
-        largeGraph.addNodes(); // Add 100 nodes
-    }
+	//table.clear('e');
 
-    for (int i = 0; i < 50; ++i) {
-        largeGraph.deleteNodes(); // Delete 50 nodes
-    }
-
-    // Print a subset of the adjacency matrix
-    std::cout << "Subset of the adjacency matrix:\n";
-    for (int i = 0; i < 10; ++i) {
-        for (int j = 0; j < 10; ++j) {
-            std::cout << largeGraph.arr[i][j] << " ";
-        }
-        std::cout << std::endl;
-    }
+	for (int i = 0; i < table.maxSize; i++) {
+		if (table.array[i].key) {
+			std::cout << table.array[i].key << " " << table.array[i].value << std::endl;
+		}
+	}
 }
