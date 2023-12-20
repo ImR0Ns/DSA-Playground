@@ -4,7 +4,7 @@
 
 Welcome to my DSA (Data Structures and Algorithms) Playground! 
 
-This repository is a dedicated space where I document my personal journey of learning and implementing fundamental Data Structures and Algorithms.
+This repository serves as a dedicated space where I document my personal journey of learning and implementing fundamental Data Structures and Algorithms. The implementations may not be perfect, but they are designed to illustrate the functionality of each concept.
 
 ## What's Inside
 
