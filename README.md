@@ -13,9 +13,15 @@ Explore the repository to find:
 ### Data Structures:
 
 - Linked Lists ✓
-- Trees | Binary Search Tree ✓ | AVL Tree ✓ | Red-Black Tree ✓
-- Graphs | Undirected/Directed Graphs with Adjacency Matrix & Adjacency List ✓
+- Trees
+    - Binary Search Tree ✓
+    - AVL Tree ✓
+    - Red-Black Tree ✓
+- Graphs
+    - Undirected/Directed Graphs with Adjacency Matrix ✓
+    - Undirected/Directed Graphs with Adjacency List ✓
 - Hash Tables
+
 
 ### Algorithms:
 
