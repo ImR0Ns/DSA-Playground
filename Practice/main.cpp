@@ -1,27 +1,31 @@
 #include <iostream>
 #include <vector>
-#include "UDGraphAL.h"
+#include "UDGraph.h"
 
 int main() {
-	UDGraphAL graph(3, true);
-	graph.addVertices();
+    // Create a large undirected graph with 1000 nodes
+    UDGraph largeGraph(1000, false);
 
-	graph.addEdge(1, 0);
+    // Test adding edges
+    for (int i = 0; i < 1000; ++i) {
+        largeGraph.addEdge(i, (i + 1) % 1000); // Connect each node to the next one
+    }
 
-	graph.addEdge(1, 2);
-	graph.addEdge(2, 0);
+    // Test adding and deleting nodes
+    for (int i = 0; i < 100; ++i) {
+        largeGraph.addNodes(); // Add 100 nodes
+    }
 
-	//graph.removeEdge(0, 1);
+    for (int i = 0; i < 50; ++i) {
+        largeGraph.deleteNodes(); // Delete 50 nodes
+    }
 
-	std::cout << "\n" << std::endl;
-
-	for (int i = 0; i < 4; i++) {
-		if (graph.adjacencyList[i] != nullptr) {
-			graph.adjacencyList[i]->printList();
-			std::cout << "\n" << std::endl;
-		}
-	}
-
-
-	std::cout << "Hello" << std::endl;
+    // Print a subset of the adjacency matrix
+    std::cout << "Subset of the adjacency matrix:\n";
+    for (int i = 0; i < 10; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            std::cout << largeGraph.arr[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
 }
