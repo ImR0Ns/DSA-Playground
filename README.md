@@ -14,7 +14,7 @@ Explore the repository to find:
 
 - Linked Lists ✓
 - Trees | Binary Search Tree ✓ | AVL Tree ✓ | Red-Black Tree ✓
-- Graphs
+- Graphs | Undirected/Directed Graphs with Adjacency Matrix & Adjacency List ✓
 - Hash Tables
 
 ### Algorithms:
