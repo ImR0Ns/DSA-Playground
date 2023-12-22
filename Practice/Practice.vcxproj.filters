@@ -31,6 +31,9 @@
     <Filter Include="Graphs with Adjacency List">
       <UniqueIdentifier>{0f0dda5f-0ab1-40d6-8dd5-f1fb577f6f66}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HashMap">
+      <UniqueIdentifier>{98363dd1-0c69-44b5-b29d-479dec144e25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

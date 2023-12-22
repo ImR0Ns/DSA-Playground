@@ -1,36 +1,39 @@
 #include <iostream>
 #include <vector>
 
+
 //I tried to do this in the stack because it is faster than in the heap
 
+template <class T, class T2>
 struct HTItems {
-	char key;
-	int value;
+	T key;
+	T2 value;
 	HTItems() : key(NULL), value(NULL) {};
-	HTItems(char key, int value) : key(key), value(value) {};
+	HTItems(T key, T2 value) : key(key), value(value) {};
 };
 
+template <class T, class T2>
 struct HTable {
-	static int const maxSize = 10;
-	HTItems array[maxSize];
+	static int const maxSize = 10; // Limit in table is 10
+	HTItems<T, T2> array[maxSize];
 
-	int hashFunction(char key) {
+	int hashFunction(T key) {
 		return key % maxSize;
 	}
 
-	void addItem(char key, int value) {
+	void addItem(T key, T2 value) {
 		int theHash = hashFunction(key);
 
 		while (array[theHash].key) {
 			theHash = (theHash + 1) % maxSize;
 		}
 
-		array[theHash] = HTItems(key, value);
+		array[theHash] = HTItems<T, T2>(key, value);
 	}
 
 
 	//get value by key
-	int getValueByKey(char key) {
+	T2 getValueByKey(T key) {
 		//hash for check
 		int theHash = hashFunction(key);
 		//check if exists
@@ -44,7 +47,7 @@ struct HTable {
 		}
 	}
 
-	int& operator[](char key) { // & - to modify not to create a clone of that!
+	T2& operator[](T key) { // & - to modify not to create a clone of that!
 		int theHash = hashFunction(key);
 
 		while (array[theHash].key != 0 && array[theHash].key != key) {
@@ -73,7 +76,7 @@ struct HTable {
 		return counter;
 	}
 
-	void clear(char key) {
+	void clear(T key) {
 		int theHash = hashFunction(key);
 
 		if (array[theHash].key) {
@@ -87,14 +90,17 @@ struct HTable {
 
 };
 
+
+
 int main() {
-	HTable table;
 
-	table['A'] = 1;
-	table['K'] = 3;
-	table['a'] = 1;
+	HTable<int, int> table;
 
-	//table.clear('e');
+	table[1] = 1;
+	table[3] = 3;
+	table[2] = 1;
+
+	table.clear(3);
 
 	for (int i = 0; i < table.maxSize; i++) {
 		if (table.array[i].key) {
@@ -102,3 +108,4 @@ int main() {
 		}
 	}
 }
+
