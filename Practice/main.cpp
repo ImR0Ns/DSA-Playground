@@ -1,111 +1,86 @@
 #include <iostream>
 #include <vector>
+#include <array>
+
+class SearchAndSort {
+public:
+    //SEARCH
+    // 
+    //liniar is by default O(n) | one iteration
+    //binary search
+    static int binarySearch(std::vector<int> arr, int start, int finish, int value) {
+        int middle = (start + finish) / 2;
+        if (arr[middle] == value) {
+            return middle;
+        }
+        else if (arr[middle] < value) {
+            return binarySearch(arr, middle, finish, value);
+        }
+        else {
+            return binarySearch(arr, start, middle, value);
+        }
 
 
-//I tried to do this in the stack because it is faster than in the heap
+        return 0;
+    };
+    //hash I did on Hash Table
+    //SORT
+    template<int size>
+    static void bubbleSort(std::array<int, size>& arr) {
+        for (int i = 0; i < arr.size(); i++) {
+            for (int j = i + 1; j < arr.size(); j++) {
+                if (arr[i] > arr[j]) { // if we change the sign to < it will descending sort
+                    int temp = arr[i]; //temp value
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+    }
 
-template <class T, class T2>
-struct HTItems {
-	T key;
-	T2 value;
-	HTItems() : key(NULL), value(NULL) {};
-	HTItems(T key, T2 value) : key(key), value(value) {};
+    template<int size>
+    static void selectSort(std::array<int, size>& arr) {
+        for (int i = 0; i < arr.size(); i++) {
+
+            int currentValue = arr[i];
+            std::array<int, 2> minValue = { arr[i], i }; //get the min value
+
+            //find the min value 
+            for (int j = i + 1; j < arr.size(); j++) {
+                if (minValue[0] > arr[j]) {
+                    minValue[0] = arr[j];
+                    minValue[1] = j;
+                }
+            }
+
+            //swap
+            arr[i] = minValue[0];
+            arr[minValue[1]] = currentValue;
+
+
+        }
+    }
+
+    template<int size>
+    static void insertionSort(std::array<int, size>& arr) {
+        for (int i = 0; i < arr.size(); i++) {
+            int key = arr[i];
+            int j = i - 1;
+
+            while (j>=0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = key;
+        }
+    }
 };
-
-template <class T, class T2>
-struct HTable {
-	static int const maxSize = 10; // Limit in table is 10
-	HTItems<T, T2> array[maxSize];
-
-	int hashFunction(T key) {
-		return key % maxSize;
-	}
-
-	void addItem(T key, T2 value) {
-		int theHash = hashFunction(key);
-
-		while (array[theHash].key) {
-			theHash = (theHash + 1) % maxSize;
-		}
-
-		array[theHash] = HTItems<T, T2>(key, value);
-	}
-
-
-	//get value by key
-	T2 getValueByKey(T key) {
-		//hash for check
-		int theHash = hashFunction(key);
-		//check if exists
-		if (array[theHash].key != NULL) {
-			return array[theHash].value;
-		}
-		else {
-			std::cout << "The key has no value";
-			//return -1 no value
-			return -1;
-		}
-	}
-
-	T2& operator[](T key) { // & - to modify not to create a clone of that!
-		int theHash = hashFunction(key);
-
-		while (array[theHash].key != 0 && array[theHash].key != key) {
-			theHash = (theHash + 1) % maxSize;
-		}
-
-		if (array[theHash].key == 0) {
-			addItem(key, 0);
-		}
-
-		return array[theHash].value;
-	}
-
-	//return max size
-	int max_size() const {
-		return maxSize;
-	}
-
-	int size() const {
-		int counter = 0;
-		for (int i = 0; i < maxSize; i++) {
-			if (array[i].key) {
-				counter++;
-			}
-		}
-		return counter;
-	}
-
-	void clear(T key) {
-		int theHash = hashFunction(key);
-
-		if (array[theHash].key) {
-			array[theHash].key = NULL;
-			array[theHash].value = NULL;
-		}
-		else {
-			std::cout << "No element to delete with that key!\n";
-		}
-	}
-
-};
-
-
 
 int main() {
-
-	HTable<int, int> table;
-
-	table[1] = 1;
-	table[3] = 3;
-	table[2] = 1;
-
-	table.clear(3);
-
-	for (int i = 0; i < table.maxSize; i++) {
-		if (table.array[i].key) {
-			std::cout << table.array[i].key << " " << table.array[i].value << std::endl;
-		}
-	}
+    std::array<int, 5> arr = { 12, 11, 13, 5, 6 }; //11, 12, 5, 13
+    SearchAndSort::insertionSort(arr);
+    for (int x : arr) {
+        std::cout << x << "\n";
+    }
 }
 

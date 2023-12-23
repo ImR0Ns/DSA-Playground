@@ -34,6 +34,9 @@
     <Filter Include="HashMap">
       <UniqueIdentifier>{98363dd1-0c69-44b5-b29d-479dec144e25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HashTable">
+      <UniqueIdentifier>{eb97cc82-40be-43a2-adc6-6e776b12d545}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -59,6 +62,9 @@
     </ClCompile>
     <ClCompile Include="UDGraphAL.cpp">
       <Filter>Graphs with Adjacency List</Filter>
+    </ClCompile>
+    <ClCompile Include="HTable.cpp">
+      <Filter>HashTable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
