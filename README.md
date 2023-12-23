@@ -20,7 +20,7 @@ Explore the repository to find:
 - Graphs
     - Undirected/Directed Graphs with Adjacency Matrix ✓
     - Undirected/Directed Graphs with Adjacency List ✓
-- Hash Tables
+- Hash Tables (I tried to reproduce std::map) ✓
 
 
 ### Algorithms:
