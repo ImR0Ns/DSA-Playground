@@ -26,6 +26,8 @@ Explore the repository to find:
 ### Algorithms:
 
 - Searching and Sorting
+    - Binary Search ✓
+    - Bubble Sort, Selection Sort, Insertion Sort, Merge Sort ✓
 - Dynamic Programming
 - Greedy Algorithms
 - Graph Algorithms
