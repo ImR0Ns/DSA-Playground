@@ -26,12 +26,12 @@ Explore the repository to find:
 ### Algorithms:
 
 - Searching and Sorting
-    - Binary Search ✓
+    - Fibonacci Series with Memoization ✓
     - Bubble Sort, Selection Sort, Insertion Sort, Merge Sort ✓
 - Dynamic Programming
+    - Binary Search ✓
+    - Longest Common Subsequence (LCS) ✓
 - Greedy Algorithms
-- Graph Algorithms
-- Recursion
 
 ## Why This Repository?
 
