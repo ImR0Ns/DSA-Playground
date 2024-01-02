@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <array>
+#include <map>
+#include <cmath>
 
 class SearchAndSort {
 public:
@@ -126,7 +128,32 @@ public:
 
 };
 
+//with memoization
+int fibonacci(int n, std::map<int, int>& mem) {
+    if (mem.find(n) != mem.end()) {
+        return mem[n];
+    }
+    if (n <= 2) {
+        return 1;
+    }
+    int calc = fibonacci(n - 1, mem) + fibonacci(n - 2, mem);
+    mem[n] = calc;
+    return calc;
+}
+
+int lcs(std::string X, std::string Y, int m, int n)
+{
+    if (m == 0 || n == 0)
+        return 0;
+    if (X[m - 1] == Y[n - 1])
+        return 1 + lcs(X, Y, m - 1, n - 1);
+    else
+        return std::max(lcs(X, Y, m, n - 1),
+            lcs(X, Y, m - 1, n));
+}
+
 int main() {
-    
+    std::map<int, int> aMap;
+    std::cout << fibonacci(70, aMap);
 }
 
