@@ -31,7 +31,7 @@ Explore the repository to find:
 - Dynamic Programming
     - Binary Search ✓
     - Longest Common Subsequence (LCS) ✓
-- Greedy Algorithms
+- Greedy Algorithms ✓
 
 ## Why This Repository?
 
